@@ -5,11 +5,15 @@ const prompt = require('prompt-sync')();
 const parser = math.parser()
 
 
-
+//Define variables
 const z1 = math.parse(prompt('Please enter the first function: '));
-const z2 = math.parse(prompt('Please enter the second function: '));
+const z2 = math.parse(prompt('Enter the second function: '));
+const p00 = parseFloat(prompt('Enter the first number of the interval: '));
+const p01 = parseFloat(prompt('Enter the last number of the interval: '));
 
-newtonvec(z1, z2, [-4, -4], 0.001, 1000)
+let p0 = [p00, p01];
+
+newtonvec(z1, z2, p0, 0.001, 1000)
 
 
 function newtonvec(z1, z2, p0, tol, iter) {
@@ -35,7 +39,6 @@ function newtonvec(z1, z2, p0, tol, iter) {
 
     let DF0inv = math.multiply(math.inv(DFp0), -1);
     let deltap = math.multiply(DF0inv, Fp0);
-    console.log(deltap)
     let p1 = p0[0] + deltap.subset(math.index(0, 0));
     let p2 = p0[1] + deltap.subset(math.index(1, 0));
     while ((math.max(math.abs(deltap)) > tol) && (counter <= iter)) {
