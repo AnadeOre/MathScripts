@@ -51,7 +51,7 @@ function weights(n) {
 }
 
 function CompNC(f, a, b, L, n) {
-    //Calculates the integral of f over [a,b] using the Composed Newton-Côtes formula for n points
+    //Calculates the integral of f over [a,b] using the Composite Newton-Côtes formula for n points
 
     w = weights(n);
     var i, y = Array(n);
